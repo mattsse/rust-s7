@@ -1,0 +1,6 @@
+[package]
+name = "rust-s7"
+version = "0.1.0"
+authors = ["Matthias <matthias.seitz@tum.de>"]
+
+[dependencies]
