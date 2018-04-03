@@ -1,6 +1,12 @@
 [package]
+authors = ["Matthias <matthias.seitz@tum.de>"]
 name = "rust-s7"
 version = "0.1.0"
-authors = ["Matthias <matthias.seitz@tum.de>"]
+license = "MIT"
 
 [dependencies]
+clippy = {version = "0.0.191", optional = true }
+
+
+[features]
+lint = ["clippy"]
