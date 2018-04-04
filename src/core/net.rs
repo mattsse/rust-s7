@@ -22,7 +22,7 @@ const ERR_ISO_RESVD_4: u32 = 0x000F_0000; // Unassigned
 const ISO_OPT_TCP_NODELAY: u32 = 0x0000_0001; // Disable Nagle algorithm
 const ISO_OPT_INSIDE_MTU: u32 = 0x0000_0002; // Max packet size < MTU ethernet card
 
-/// TPKT Header - ISO on TCP - RFC 1006 (4 bytes)
+/// TPKT header - ISO on TCP - RFC 1006 (4 bytes)
 #[derive(Debug)]
 pub struct TTPKT {
     version: u8,   // Always 3 for RFC 1006
@@ -39,7 +39,7 @@ pub struct TcoptParams {
 }
 
 pub struct TcotpCo {
-    h_length: u8, // Header length : initialized to 6 (length without params - 1)
+    h_length: u8, // header length : initialized to 6 (length without params - 1)
     // descending classes that add values in params field must update it.
     pdut_ype: u8, // 0xE0 Connection request
     // 0xD0 Connection confirm
@@ -51,27 +51,27 @@ pub struct TcotpCo {
     params: TcoptParams,
 }
 
-/// cotp Header for DATA EXCHANGE
+/// cotp header for DATA EXCHANGE
 #[derive(Debug)]
 pub struct TcotpDt {
-    h_length: u8, // Header length : 3 for this header
+    h_length: u8, // header length : 3 for this header
     pdu_type: u8, // 0xF0 for this header
-    eot_num: u8,  // EOT (bit 7) + PDU Number (bits 0..6)
+    eot_num: u8,  // EOT (bit 7) + PDU number (bits 0..6)
                   // EOT = 1 -> End of Trasmission Packet (This packet is complete)
-                  // PDU Number : Always 0
+                  // PDU number : Always 0
 }
 
 // Info part of a PDU, only common parts. We use it to check the consistence
 // of a telegram regardless of it's nature (control or data).
 #[derive(Debug)]
 pub struct TIsoHeaderInfo {
-    ttpkt: TTPKT, // TPKT Header
+    ttpkt: TTPKT, // TPKT header
     // Common part of any cotp
-    h_length: u8, // Header length : 3 for this header
+    h_length: u8, // header length : 3 for this header
     pdu_type: u8, // Pdu type
 }
 
-/// PDU Type consts (Code + Credit)
+/// PDU Type consts (code + Credit)
 const PDU_TYPE_CR: u8 = 0xE0; // Connection request
 const PDU_TYPE_CC: u8 = 0xD0; // Connection confirm
 const PDU_TYPE_DR: u8 = 0x80; // Disconnect request
@@ -80,18 +80,18 @@ const PDU_TYPE_DT: u8 = 0xF0; // Data transfer
 
 const PDU_EO_T: u8 = 0x80; // End of Trasmission Packet (This packet is complete)
 
-const DATA_HEADER_SIZE: usize = 4 + 3; // sizeof(ttpkt) + sizeof()
+const DATA_HEADER_SIZE: usize = 4 + 3; // sizeof(ttpkt) + sizeof(TcotpDt)
 const ISO_FRAME_SIZE: usize = ISO_PAYLOAD_SIZE + DATA_HEADER_SIZE;
 
 #[derive(Debug)]
 pub struct TIsoControlPDU {
-    ttpkt: TTPKT,  // ttpkt Header
-    cotp: TcotpDt, // COPT Header for CONNECTION stuffs
+    ttpkt: TTPKT,  // ttpkt header
+    cotp: TcotpDt, // COPT header for CONNECTION stuffs
 }
 
 pub struct TIsoDataPDU {
-    ttpkt: TTPKT,                    // TPKT Header
-    cotp: TcotpDt,                   // COPT Header for DATA EXCHANGE
+    ttpkt: TTPKT,                    // TPKT header
+    cotp: TcotpDt,                   // COPT header for DATA EXCHANGE
     payload: [u8; ISO_PAYLOAD_SIZE], // Payload
 }
 

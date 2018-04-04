@@ -1,4 +1,4 @@
-/// Area ID
+/// area id
 const S7_AREA_PE: u8 = 0x81;
 const S7_AREA_PA: u8 = 0x82;
 const S7_AREA_MK: u8 = 0x83;
@@ -51,7 +51,7 @@ const S7_CPU_STATUS_RUN: u8 = 0x08;
 const S7_CPU_STATUS_STOP: u8 = 0x04;
 
 const EVC_SNAP7_BASE: u32 = 0x0000_8000;
-/// S7 Server Event Code
+/// S7 Server Event code
 const EVC_PDU_INCOMING: u32 = 0x0001_0000;
 const EVC_DATA_READ: u32 = 0x0002_0000;
 const EVC_DATA_WRITE: u32 = 0x0004_0000;
@@ -80,7 +80,7 @@ const EVS_GET_CLOCK: u16 = 0x0001;
 const EVS_SET_CLOCK: u16 = 0x0002;
 const EVS_SET_PASSWORD: u16 = 0x0001;
 const EVS_CLR_PASSWORD: u16 = 0x0002;
-// Event Result
+// Event result
 const EVR_NO_ERROR: u16 = 0;
 const EVR_FRAGMENT_REJECTED: u16 = 0x0001;
 const EVR_MALFORMED_PDU: u16 = 0x0002;
@@ -121,7 +121,7 @@ const P_I32_BRECV_TIMEOUT: i32 = 13;
 const P_U32_RECOVERY_TIME: i32 = 14;
 const P_U32_KEEP_ALIVE_TIME: i32 = 15;
 
-// Bool param is passed as int32_t : 0->false, 1->true
+// Bool param is passed as i32 : 0->false, 1->true
 // String param (only set) is passed as pointer
 //-----------------------------------------------------------------------------
 //                               INTERNALS CONSTANTS
@@ -152,7 +152,7 @@ const CODE_7NO_PASSWORD_TO_SET: u16 = 0xD605;
 const CODE_7FUN_NOT_AVAILABLE: u16 = 0x8104;
 const CODE_7DATA_OVER_PDU: u16 = 0x8500;
 
-/// Result transport size
+/// result transport size
 const TS_RES_BIT: u8 = 0x03;
 const TS_RES_BYTE: u8 = 0x04;
 const TS_RES_INT: u8 = 0x05;
@@ -199,13 +199,13 @@ const PDU_START: u8 = 0x28;
 const PDU_STOP: u8 = 0x29;
 // CPU stop
 const PDU_START_UPLOAD: u8 = 0x1D;
-// Start Upload
+// start Upload
 const PDU_UPLOAD: u8 = 0x1E;
 // Upload
 const PDU_END_UPLOAD: u8 = 0x1F;
 // EndUpload
 const PDU_REQ_DOWNLOAD: u8 = 0x1A;
-// Start Download request
+// start Download request
 const PDU_DOWNLOAD: u8 = 0x1B;
 // Download request
 const PDU_DOWNLOAD_ENDED: u8 = 0x1C;
@@ -214,21 +214,21 @@ const PDU_CONTROL: u8 = 0x28; // Control (insert/delete..)
 
 /// PDU SubFunctions
 const SFUN_LIST_ALL: u8 = 0x01;
-// List all blocks
+/// List all blocks
 const SFUN_LIST_BO_T: u8 = 0x02;
-// List Blocks of type
+/// List Blocks of type
 const SFUN_BLK_INFO: u8 = 0x03;
-// Get Block info
+/// Get Block info
 const SFUN_READ_SZL: u8 = 0x01;
-// Read SZL
+/// Read SZL
 const SFUN_READ_CLOCK: u8 = 0x01;
-// Read Clock (Date and Time)
+/// Read Clock (Date and time)
 const SFUN_SET_CLOCK: u8 = 0x02;
-// Set Clock (Date and Time)
+/// Set Clock (Date and time)
 const SFUN_ENTER_PWD: u8 = 0x01;
-// Enter password    for this session
+/// Enter password    for this session
 const SFUN_CANCEL_PWD: u8 = 0x02;
-// Cancel password    for this session
+/// Cancel password    for this session
 const SFUN_INSERT: u8 = 0x50;
-// Insert block
+/// Insert block
 const SFUN_DELETE: u8 = 0x42; // Delete block
