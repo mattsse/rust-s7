@@ -1,12 +1,19 @@
 [package]
 authors = ["Matthias <matthias.seitz@tum.de>"]
+license = "MIT"
 name = "rust-s7"
 version = "0.1.0"
-license = "MIT"
 
 [dependencies]
-clippy = {version = "0.0.191", optional = true }
+bincode = "1.0.0"
+byteorder = "1.2.2"
+chrono = "0.4.1"
+serde = "1.0.37"
+serde_derive = "1.0.37"
 
+[dependencies.clippy]
+optional = true
+version = "0.0.191"
 
 [features]
 lint = ["clippy"]
